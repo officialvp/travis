@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
  - docker
@@ -6,7 +7,7 @@ before install:
  - docker build -t dako22/docker-react -f Dockerfile.dev .
 
 script:
- - docker run dako22/docker-react npm run test -- --coverage
+ - docker run -e CI=true dako22/docker-react npm run test -- --coverage
 
 deploy:
  provider: elasticbeanstalk
